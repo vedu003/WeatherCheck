@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>header}}
+</head>
+<body>
+    
+    {{>navbar}}
+    <!-- Main Header -->
+    <div class="container-fluid main_header">
+        <div class="row">
+            <div class="col-md-12 col-12 mx auto">
+                <div class="main_content">
+                   <form class="temp_form">
+                       <input type="text" id="cityname" placeholder="Enter Your City Name" autocomplete="off">
+                       <input type="submit" value="search" id="submitbtn">
+                   </form>                   
+                </div>
+                <div class="tempinfo">
+                    <div class="top_layer">
+                        <p id="day">Tuesday</p>
+                        <p id="today_data">14 May</p>
+                    </div>
+                    <div class="main_layer">
+                        <p id="city_name">Get Your Output Here</p>
+                        <div class="middle_layer data_hide">
+                            <p id="temp"><span id="temp_real">0</span><sup>o</sup> C</p>
+                            <p id="temp_status"><i class="fa fa-cloud" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     
+    {{>footer}}
+
+    <script src="js/min.js"></script>
+    <script>
+        
+        const currentdaymonthdate = () => {
+
+            let dayid= document.getElementById('day');
+            let today_dataid= document.getElementById('today_data');
+
+            let weekday = new Array(7);
+            weekday[0]= "Sunday";
+            weekday[1]= "Monday";
+            weekday[2]= "Tuesday";
+            weekday[3]= "Wednesday";
+            weekday[4]= "Thursday";
+            weekday[5]= "Friday";
+            weekday[6]= "Saturday";
+
+            let month = new Array(12);
+            month[0]= "Jan";
+            month[1]= "Feb";
+            month[2]= "March";
+            month[3]= "April";
+            month[4]= "May";
+            month[5]= "June";
+            month[6]= "July";
+            month[7]="Aug";
+            month[8]="Sep";
+            month[9]="OCt";
+            month[10]="Nov";
+            month[11]="Dec";
+
+            let today = new Date();
+            let monthno= today.getMonth();
+            let monthname = month[monthno];
+            let date= today.getDate();
+            let day= today.getDay();
+            
+
+            let monthdate= `${date} ${monthname}`;
+            dayid.innerText=weekday[day];
+            today_dataid.innerText=monthdate
+        }
+        currentdaymonthdate();
+    </script>
+</body>
+</html>
